@@ -11,6 +11,11 @@ const appConfig = (app: any, express: any) => {
 	app.use(compression()); // giảm kích thước giữ liệu gửi đi
 	app.use(helmet()); // bảo vệ thông tin
 
+	// view engine
+	app.use(express.static('../public'));
+	app.set('view engine', 'ejs');
+	app.set('views', './src/views');
+
 	// parse application/x-www-form-urlencoded
 	app.use(express.urlencoded({ extended: true }));
 
