@@ -5,7 +5,8 @@
 	"main": "server.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon  ./server.ts"
+		"start": "nodemon  ./server.ts",
+		"connect": "npx sequelize-cli-typescript db:migrate"
 	},
 	"author": "nguyenminhhoang",
 	"license": "ISC",
@@ -15,7 +16,9 @@
 		"ejs": "^3.1.9",
 		"express": "^4.18.2",
 		"helmet": "^7.0.0",
-		"morgan": "^1.10.0"
+		"morgan": "^1.10.0",
+		"mysql2": "^3.3.0",
+		"sequelize": "^6.31.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.21.8",
@@ -27,6 +30,8 @@
 		"@types/morgan": "^1.9.4",
 		"@types/node": "^20.1.1",
 		"nodemon": "^2.0.22",
+		"sequelize-cli": "^6.6.0",
+		"sequelize-cli-typescript": "^3.2.0-c",
 		"typescript": "^5.0.4"
 	}
 }
