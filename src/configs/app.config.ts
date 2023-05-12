@@ -1,9 +1,10 @@
+import express from 'express';
 import compression from 'compression';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
-const appConfig = (app: any, express: any) => {
+const appConfig = (app: express.Application) => {
 	// config
 	dotenv.config();
 

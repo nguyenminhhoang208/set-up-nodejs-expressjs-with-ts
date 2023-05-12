@@ -1,21 +1,17 @@
 'use strict';
 
-// import { Sequelize } from 'sequelize';
+var fs = require('fs');
+var path = require('path');
+var Sequelize = require('sequelize');
+var basename = path.basename(__filename);
+var env = process.env.NODE_ENV || 'development';
+var config = require(__dirname + '/..configsdb.config.json')[env];
+var db: any = {};
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const { process: any } = require('process');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../configs/db.config.json')[env];
-const db: any = {};
-
-let sequelize: any;
 if (config.use_env_variable) {
-	sequelize = new Sequelize(process.env[config.use_env_variable], config);
+	var sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-	sequelize = new Sequelize(
+	var sequelize = new Sequelize(
 		config.database,
 		config.username,
 		config.password,
@@ -24,19 +20,13 @@ if (config.use_env_variable) {
 }
 
 fs.readdirSync(__dirname)
-	.filter((file: any) => {
+	.filter((file: string) => {
 		return (
-			file.indexOf('.') !== 0 &&
-			file !== basename &&
-			file.slice(-3) === '.js' &&
-			file.indexOf('.test.js') === -1
+			file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
 		);
 	})
 	.forEach((file: any) => {
-		const model = require(path.join(__dirname, file))(
-			sequelize,
-			Sequelize.DataTypes
-		);
+		var model = sequelize['import'](path.join(__dirname, file));
 		db[model.name] = model;
 	});
 

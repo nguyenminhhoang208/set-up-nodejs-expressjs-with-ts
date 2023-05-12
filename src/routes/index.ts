@@ -1,7 +1,7 @@
-import { Express } from 'express';
+import express from 'express';
 import siteRoutes from './site/index';
 
-const routes = (app: Express): void => {
+const routes = (app: express.Application): void => {
 	// [USE] /
 	app.use('/', siteRoutes);
 };
