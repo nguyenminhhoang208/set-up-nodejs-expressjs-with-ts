@@ -1,17 +1,22 @@
-'use strict';
-
-var fs = require('fs');
-var path = require('path');
-var Sequelize = require('sequelize');
-var basename = path.basename(__filename);
-var env = process.env.NODE_ENV || 'development';
-var config = require(__dirname + '/..configsdb.config.json')[env];
-var db: any = {};
+import { Sequelize } from 'sequelize';
+import process from 'process';
+import path from 'path';
+import fs from 'fs';
+// const fs = require('fs');
+// const path = require('path');
+// const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/..configsdb.config.json')[env];
+let db: any = {};
 
 if (config.use_env_variable) {
-	var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+	var sequelize: any = new Sequelize(
+		process.env[config.use_env_variable]!,
+		config
+	);
 } else {
-	var sequelize = new Sequelize(
+	var sequelize: any = new Sequelize(
 		config.database,
 		config.username,
 		config.password,

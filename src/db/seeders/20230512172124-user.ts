@@ -1,8 +1,8 @@
-'use strict';
+import { QueryInterface, Sequelize } from 'sequelize';
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
-	async up(queryInterface, Sequelize) {
+export default {
+	async up(queryInterface: QueryInterface, Sequelize: Sequelize | any) {
 		/**
 		 * Add seed commands here.
 		 *
@@ -18,7 +18,7 @@ module.exports = {
 			[
 				{
 					firstName: 'Nguyen Minh',
-					lastName: 'Hoanng',
+					lastName: 'Hoanng 4',
 					email: 'demo@demo.com',
 					password: '$321!pass!123$',
 					createdAt: new Date(),
@@ -29,7 +29,7 @@ module.exports = {
 		);
 	},
 
-	async down(queryInterface, Sequelize) {
+	async down(queryInterface: QueryInterface | any, Sequelize: Sequelize | any) {
 		/**
 		 * Add commands to revert seed here.
 		 *

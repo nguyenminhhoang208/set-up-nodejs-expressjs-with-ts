@@ -1,7 +1,7 @@
 import express from 'express';
 import routes from './routes';
 import appConfig from './configs/app.config';
-import connectDB from './dbs/connectDB';
+import connectDB from './db/connectDB';
 
 // app
 const app: express.Application = express();
