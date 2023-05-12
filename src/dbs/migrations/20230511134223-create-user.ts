@@ -4,7 +4,7 @@ import { QueryInterface } from 'sequelize';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-	async up(queryInterface: any, Sequelize: any) {
+	async up(queryInterface: QueryInterface, Sequelize: any) {
 		await queryInterface.createTable('Users', {
 			id: {
 				allowNull: false,
