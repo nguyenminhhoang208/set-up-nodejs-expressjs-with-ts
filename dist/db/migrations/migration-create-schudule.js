@@ -14,42 +14,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     up(queryInterface, Sequelize) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.createTable('Users', {
+            yield queryInterface.createTable('schudules', {
                 id: {
                     allowNull: false,
                     autoIncrement: true,
                     primaryKey: true,
                     type: Sequelize.INTEGER,
                 },
-                email: {
+                currentNumber: {
+                    type: Sequelize.INTEGER,
+                },
+                maxNumber: {
+                    type: Sequelize.INTEGER,
+                },
+                date: {
+                    type: Sequelize.DATE,
+                },
+                timeType: {
                     type: Sequelize.STRING,
                 },
-                password: {
-                    type: Sequelize.STRING,
-                },
-                firstName: {
-                    type: Sequelize.STRING,
-                },
-                lastName: {
-                    type: Sequelize.STRING,
-                },
-                andress: {
-                    type: Sequelize.STRING,
-                },
-                gender: {
-                    type: Sequelize.BOOLEAN,
-                },
-                roleId: {
-                    type: Sequelize.STRING,
-                },
-                phonenumber: {
-                    type: Sequelize.STRING,
-                },
-                positionId: {
-                    type: Sequelize.STRING,
-                },
-                image: {
-                    type: Sequelize.STRING,
+                doctorId: {
+                    type: Sequelize.INTEGER,
                 },
                 createdAt: {
                     allowNull: false,
@@ -64,7 +49,7 @@ exports.default = {
     },
     down(queryInterface, Sequelize) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.dropTable('Users');
+            yield queryInterface.dropTable('schudules');
         });
     },
 };

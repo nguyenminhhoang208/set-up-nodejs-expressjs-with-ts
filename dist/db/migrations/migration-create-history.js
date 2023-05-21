@@ -14,42 +14,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     up(queryInterface, Sequelize) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.createTable('Users', {
+            yield queryInterface.createTable('clinics', {
                 id: {
                     allowNull: false,
                     autoIncrement: true,
                     primaryKey: true,
                     type: Sequelize.INTEGER,
                 },
-                email: {
-                    type: Sequelize.STRING,
+                patientId: {
+                    type: Sequelize.INTEGER,
                 },
-                password: {
-                    type: Sequelize.STRING,
+                doctorId: {
+                    type: Sequelize.INTEGER,
                 },
-                firstName: {
-                    type: Sequelize.STRING,
+                description: {
+                    type: Sequelize.TEXT,
                 },
-                lastName: {
-                    type: Sequelize.STRING,
-                },
-                andress: {
-                    type: Sequelize.STRING,
-                },
-                gender: {
-                    type: Sequelize.BOOLEAN,
-                },
-                roleId: {
-                    type: Sequelize.STRING,
-                },
-                phonenumber: {
-                    type: Sequelize.STRING,
-                },
-                positionId: {
-                    type: Sequelize.STRING,
-                },
-                image: {
-                    type: Sequelize.STRING,
+                files: {
+                    type: Sequelize.TEXT,
                 },
                 createdAt: {
                     allowNull: false,
@@ -64,7 +46,7 @@ exports.default = {
     },
     down(queryInterface, Sequelize) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.dropTable('Users');
+            yield queryInterface.dropTable('clinics');
         });
     },
 };

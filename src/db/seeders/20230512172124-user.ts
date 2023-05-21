@@ -17,12 +17,14 @@ export default {
 			'Users',
 			[
 				{
-					firstName: 'Nguyen Minh',
-					lastName: 'Hoanng 4',
-					email: 'demo@demo.com',
-					password: '$321!pass!123$',
-					createdAt: new Date(),
-					updatedAt: new Date(),
+					email: 'admin@gmail.com',
+					password: '123456',
+					firstName: 'Nguyen',
+					lastName: 'Rin',
+					address: 'HCM',
+					gender: 1,
+					typeRole: 'ROLE',
+					keyRole: 'R1',
 				},
 			],
 			{}

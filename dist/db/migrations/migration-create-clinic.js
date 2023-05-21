@@ -14,39 +14,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     up(queryInterface, Sequelize) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.createTable('Users', {
+            yield queryInterface.createTable('clinics', {
                 id: {
                     allowNull: false,
                     autoIncrement: true,
                     primaryKey: true,
                     type: Sequelize.INTEGER,
                 },
-                email: {
+                name: {
                     type: Sequelize.STRING,
                 },
-                password: {
+                address: {
                     type: Sequelize.STRING,
                 },
-                firstName: {
-                    type: Sequelize.STRING,
-                },
-                lastName: {
-                    type: Sequelize.STRING,
-                },
-                andress: {
-                    type: Sequelize.STRING,
-                },
-                gender: {
-                    type: Sequelize.BOOLEAN,
-                },
-                roleId: {
-                    type: Sequelize.STRING,
-                },
-                phonenumber: {
-                    type: Sequelize.STRING,
-                },
-                positionId: {
-                    type: Sequelize.STRING,
+                description: {
+                    type: Sequelize.TEXT,
                 },
                 image: {
                     type: Sequelize.STRING,
@@ -64,7 +46,7 @@ exports.default = {
     },
     down(queryInterface, Sequelize) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.dropTable('Users');
+            yield queryInterface.dropTable('clinics');
         });
     },
 };
