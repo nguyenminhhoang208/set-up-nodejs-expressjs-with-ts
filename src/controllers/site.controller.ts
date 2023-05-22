@@ -22,8 +22,12 @@ class Site {
 		res: express.Response,
 		next: express.NextFunction
 	) => {
-		const response = await createUser(req.body);
-		res.status(201).json(response);
+		try {
+			const response = await createUser(req.body);
+			res.status(201).json(response);
+		} catch (error) {
+			return res.status(500).json(error);
+		}
 	};
 }
 
