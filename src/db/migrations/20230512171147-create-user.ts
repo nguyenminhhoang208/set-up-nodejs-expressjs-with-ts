@@ -27,6 +27,8 @@ export default {
 			andress: {
 				type: Sequelize.STRING,
 			},
+			// 0 - male
+			// 1 - female
 			gender: {
 				type: Sequelize.BOOLEAN,
 			},

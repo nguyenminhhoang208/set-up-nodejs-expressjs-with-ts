@@ -1,4 +1,4 @@
-import db from '../models';
+import db from '../../models';
 
 class HomeService {
 	home = async (data: object = {}): Promise<object> => {
