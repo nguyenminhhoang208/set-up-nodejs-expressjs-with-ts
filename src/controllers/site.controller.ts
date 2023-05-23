@@ -8,26 +8,17 @@ class Site {
 		res: express.Response,
 		next: express.NextFunction
 	) => {
-		try {
-			const data: object = await HomeService.home();
-			return res.status(200).render('homepage.ejs', {
-				data: JSON.stringify(data),
-			});
-		} catch (error) {
-			return res.status(500).json(error);
-		}
+		return res.status(200).render('homepage.ejs', {
+			data: JSON.stringify(await HomeService.home()),
+		});
 	};
 	register = async (
 		req: express.Request,
 		res: express.Response,
 		next: express.NextFunction
 	) => {
-		try {
-			const response = await createUser(req.body);
-			res.status(201).json(response);
-		} catch (error) {
-			return res.status(500).json(error);
-		}
+		const response = await createUser(req.body);
+		res.status(201).json(response);
 	};
 }
 

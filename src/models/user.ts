@@ -1,5 +1,18 @@
 import { Sequelize, Model } from 'sequelize';
 
+export type Tuser = {
+	email: string;
+	password: string;
+	firstName: string;
+	lastName: string;
+	address: string;
+	gender: boolean;
+	image: string;
+	roleId: string;
+	positionId: string;
+	phonenumber: string;
+};
+
 module.exports = (sequelize: Sequelize, DataTypes: any): object => {
 	class User extends Model {
 		/**

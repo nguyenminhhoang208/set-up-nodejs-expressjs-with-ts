@@ -1,29 +1,27 @@
 import db from '../../models';
+import {
+	BAD_REQUEST,
+	CONFLICT,
+} from '../../utils/response.utils/error.response';
 import { hashPassword } from '../auth.services';
+import { Tuser } from './../../models/user';
+import findUserByEmail from '../../helpers/findUser/findUserByEmail';
 
-type Tdata = {
-	email: string;
-	password: string;
-	firstName: string;
-	lastName: string;
-	address: string;
-	gender: boolean;
-	image: string;
-	roleId: string;
-	positionId: string;
-	phonenumber: string;
-};
-
-const createUser = async (data: Tdata) => {
+const createUser = async (data: Tuser) => {
+	// Check data from the client
 	if (!data) {
-		return {
-			statusCode: 500,
-			message: 'Error!',
-		};
+		throw new BAD_REQUEST();
 	}
 
-	// hash password
-	const { password, ...orther } = data;
+	// Check email
+	const { email, password, ...orther } = data;
+
+	const user: Promise<Tuser> | any = await findUserByEmail(email);
+	if (user) {
+		throw new CONFLICT('Email already exists!');
+	}
+
+	// Hash password
 	const hashPw = await hashPassword(password);
 	if (!hashPw) {
 		return {
@@ -32,8 +30,8 @@ const createUser = async (data: Tdata) => {
 		};
 	}
 
-	// create new user
-	const newData = { password: hashPw, ...orther };
+	// Create new user
+	const newData = { email, password: hashPw, ...orther };
 	await db.User.create(newData);
 	return {
 		statusCode: 201,
