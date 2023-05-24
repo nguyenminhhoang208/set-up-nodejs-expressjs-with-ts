@@ -5,7 +5,7 @@ import {
 	FORBIDDEN,
 	NOTFOUND,
 	UNAUTHORIZED,
-} from '../../utils/response.utils/error.response';
+} from '../../utils/response.utils';
 import { hashPassword } from '../auth.services';
 
 const updateUserService = async (
@@ -19,7 +19,7 @@ const updateUserService = async (
 	}
 
 	if (data) {
-		return !!data;
+		return !data;
 		throw new BAD_REQUEST('No data for update!');
 	}
 	// Handle Authentication
