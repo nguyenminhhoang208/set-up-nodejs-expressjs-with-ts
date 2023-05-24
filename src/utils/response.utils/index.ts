@@ -1,19 +1,4 @@
-import { CREATED, OK } from './success.response';
+import { statusCodes } from './statusCodes';
+import { reasonPhrases } from './reasonPhrases';
 
-import {
-	BAD_REQUEST,
-	FORBIDDEN,
-	NOTFOUND,
-	CONFLICT,
-	UNAUTHORIZED,
-} from './error.response';
-
-export {
-	BAD_REQUEST,
-	FORBIDDEN,
-	NOTFOUND,
-	CONFLICT,
-	UNAUTHORIZED,
-	CREATED,
-	OK,
-};
+export { statusCodes, reasonPhrases };
