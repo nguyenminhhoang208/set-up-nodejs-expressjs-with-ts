@@ -1,6 +1,6 @@
 import express from 'express';
 import HomeService from '../services/site.services/home.service';
-import { createUser } from '../services/crud.services';
+import { createUserService } from '../services/crud.services';
 
 class Site {
 	home = async (
@@ -17,7 +17,7 @@ class Site {
 		res: express.Response,
 		next: express.NextFunction
 	) => {
-		const response = await createUser(req.body);
+		const response = await createUserService(req.body);
 		res.status(201).json(response);
 	};
 }

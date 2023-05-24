@@ -1,5 +1,11 @@
-import createUser from './createUser';
-import getAllUser from './getAllUser';
-import updateUser from './updateUser';
+import createUserService from './createUser';
+import getAllUserService from './getAllUser';
+import updateUserService from './updateUser';
+import deleteUserService from './deleteUser';
 
-export { createUser, getAllUser,updateUser };
+export {
+	createUserService,
+	getAllUserService,
+	updateUserService,
+	deleteUserService,
+};

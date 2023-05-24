@@ -1,3 +1,4 @@
 import asyncHandler from './asyncHandler';
+import { findUserById, findUserByEmail } from './findUser';
 
-export { asyncHandler };
+export { asyncHandler, findUserById, findUserByEmail };

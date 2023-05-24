@@ -7,7 +7,7 @@ import { hashPassword } from '../auth.services';
 import { Tuser } from './../../models/user';
 import findUserByEmail from '../../helpers/findUser/findUserByEmail';
 
-const createUser = async (data: Tuser) => {
+const createUserService = async (data: Tuser) => {
 	// Check data from the client
 	if (!data) {
 		throw new BAD_REQUEST();
@@ -38,4 +38,4 @@ const createUser = async (data: Tuser) => {
 		message: 'Created!',
 	};
 };
-export default createUser;
+export default createUserService;

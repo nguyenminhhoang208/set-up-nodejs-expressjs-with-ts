@@ -1,4 +1,4 @@
-import db from '../../models';
+import findUserById from '../../helpers/findUser/findUserById';
 import { Tuser } from '../../models/user';
 import {
 	BAD_REQUEST,
@@ -6,14 +6,22 @@ import {
 	NOTFOUND,
 	UNAUTHORIZED,
 } from '../../utils/response.utils/error.response';
-import { comparePassword, hashPassword } from '../auth.services';
-import findUserById from '../../helpers/findUser/findUserById';
+import { hashPassword } from '../auth.services';
 
-const updateUser = async (
+const updateUserService = async (
 	id: number,
-	data: Tuser,
+	data: any,
 	accessToken: string
 ): Promise<any> => {
+	// Handle data from client
+	if (!id) {
+		throw new BAD_REQUEST('No id for update!');
+	}
+
+	if (data) {
+		return !!data;
+		throw new BAD_REQUEST('No data for update!');
+	}
 	// Handle Authentication
 	if (!accessToken) {
 		throw new UNAUTHORIZED();
@@ -24,37 +32,28 @@ const updateUser = async (
 		throw new FORBIDDEN();
 	}
 
-	// Handle data from client
-	if (!id) {
-		throw new BAD_REQUEST('No id for update!');
-	}
-	if (!data) {
-		throw new BAD_REQUEST('No data for update!');
-	}
-
 	// Check user
 	const user: Promise<Tuser> | any = await findUserById(id);
 	if (!user) {
 		throw new NOTFOUND('ID does not exist!');
 	}
 
-	// Check password change
-	let newPw: any;
-	if (!(await comparePassword(data.password, user.password))) {
-		newPw = await hashPassword(data.password);
+	if (data.password) {
+		// Hash new password
+		const newPw = await hashPassword(data.password);
+		data.password = newPw;
 	}
-
 	// Update new data for user
 	await user.update({
+		...user,
 		...data,
-		password: newPw ? newPw : user.password,
 	});
 
 	// Save new data of user to DB
 	const newUser = await user.save();
 	if (!newUser) {
-		throw new BAD_REQUEST();
+		throw new Error();
 	}
 	return newUser;
 };
-export default updateUser;
+export default updateUserService;
